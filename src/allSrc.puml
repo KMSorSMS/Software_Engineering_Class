@@ -1,0 +1,59 @@
+@startuml
+!define RECTANGLE class
+!define END_RECTANGLE }
+
+!define ACTOR actor
+!define END_ACTOR }
+
+!define ARROW ->
+!define DIAMOND note
+!define END_DIAMOND end note
+
+RECTANGLE Student {
+  -ID: String
+  -Password: String
+  -Name: String
+  -Sex: String
+  -Birthday: String
+  -Institute: String
+  -Major: String
+}
+
+RECTANGLE Teacher {
+  -ID: String
+  -Password: String
+  -Name: String
+  -Sex: String
+  -Birthday: String
+  -Institute: String
+  -Major: String
+}
+
+RECTANGLE Administrator {
+  -ID: String
+  -Password: String
+  -Name: String
+  -Sex: String
+  -Birthday: String
+  -Institute: String
+  -Major: String
+}
+
+RECTANGLE System {
+  +login()
+  +viewGrade()
+  +manageCourse()
+  +manageUser()
+}
+allow_mixing
+ACTOR Student
+ACTOR Teacher
+ACTOR Administrator
+ACTOR SystemAdmin
+
+Student --|> System : Uses
+Teacher --|> System : Uses
+Administrator --|> System : Uses
+SystemAdmin --|> System : Manages
+
+@enduml

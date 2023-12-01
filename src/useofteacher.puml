@@ -1,0 +1,59 @@
+@startuml
+left to right direction
+
+actor "学生" as student
+actor "教师" as teacher
+actor "管理员" as admin
+
+rectangle "用户登录" {
+  usecase "验证用户信息" as checkInfo
+  usecase "查询个人信息" as info
+  usecase "修改个人信息" as editInfo
+}
+
+rectangle "学生成绩查询" {
+  usecase "学生查询成绩" as gradeInfo
+  usecase "教师输入课程成绩" as gradeEnter
+  usecase "分段统计成绩" as sortGrade
+}
+
+rectangle "课程信息管理" {
+  usecase "学生查询课程" as courseView
+  usecase "教师查看所教授课程" as courseViewTeacher
+  usecase "教师增加新课程" as addCourse
+}
+
+rectangle "用户管理" {
+  usecase "管理员增加用户" as addUser
+  usecase "管理员删除用户" as deleteUser
+}
+
+student --> checkInfo
+student --> info
+student --> gradeInfo
+student --> courseView
+
+teacher --> checkInfo
+teacher --> info
+teacher --> gradeEnter
+teacher --> courseViewTeacher
+teacher --> addCourse
+
+admin --> checkInfo
+admin --> info
+admin --> addUser
+admin --> deleteUser
+
+checkInfo --> "验证用户信息详情"
+info --> "查询个人信息详情"
+editInfo --> "修改个人信息详情"
+gradeInfo --> "学生查询成绩详情"
+gradeEnter --> "教师输入课程成绩详情"
+courseView --> "学生查询课程详情"
+courseViewTeacher --> "教师查看所教授课程详情"
+addCourse --> "教师增加新课程详情"
+addUser --> "管理员增加用户详情"
+deleteUser --> "管理员删除用户详情"
+sortGrade --> "分段统计成绩详情"
+
+@enduml
